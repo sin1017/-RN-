@@ -1,0 +1,5 @@
+- 下載 eas `npm install -g eas-cli`
+- 登入 expo `eas login`，輸入帳密
+- 查看帳號狀態 `eas whoami`
+- 建制基礎資訊 `eas build:configure`
+- 建置 iOS 平台 `eas build --platform ios`
