@@ -6,10 +6,17 @@ function main(value) {
 
 
   return (
-    <View>
+    <View style={style.container}>
       <Board />
     </View>
   )
 }
 
 export default main;
+
+const style = StyleSheet.create({
+  container: {
+    marginTop: 40,
+    alignItems: 'center',
+  }
+})

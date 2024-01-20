@@ -101,7 +101,6 @@ const styles = StyleSheet.create({
 		marginTop: 30,
 	},
 	playerBoxList: {
-		// backgroundColor: 'black',
 		marginTop: 15,
 		marginBottom: 20,
 		flexDirection: 'row',

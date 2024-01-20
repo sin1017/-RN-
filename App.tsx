@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, ImageBackground, Image } from 'react-native';
+import { StyleSheet, View, } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
@@ -8,8 +8,6 @@ import ErrorBoundary from 'react-native-error-boundary';
 import Header from './components/header';
 import Footer from './components/footer';
 import Body from './components/body';
-import { store, persistor } from './redux/store';
-
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const Stack = createNativeStackNavigator();
@@ -41,7 +39,7 @@ const styles = StyleSheet.create({
 		flex: 0.9,
 	},
 	body: {
-		flex: 5,
+    flex: 5,
 		alignItems: 'center',
 		backgroundColor: '#f5f5f5',
 	},

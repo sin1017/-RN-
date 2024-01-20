@@ -12,4 +12,3 @@ function body(value) {
 }
 
 export default body
-
