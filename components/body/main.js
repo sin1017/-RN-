@@ -16,7 +16,7 @@ export default main;
 
 const style = StyleSheet.create({
   container: {
-    marginTop: 40,
+    marginTop: 50,
     alignItems: 'center',
   }
 })

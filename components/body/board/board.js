@@ -5,13 +5,25 @@ import React from 'react';
 function board(value) {
   const boardList = Array(16).fill(0).map((value, index) => [[], [], []])
 
+
   return (
-    <View style={style.container}>
+    <View>
       <View style={style.content}>
         {
-          boardList.map((item, index) => (
-            <View key={index} style={[style.boardStyle, index % 2 === 0 ? style.witeBoard : style.gridBoard]}></View>
-          ))
+          boardList.map((item, index) => {
+            let boardStyle = 'witeBoard';
+            if ([2, 4, 5, 7, 10, 12, 13, 15].includes(index + 1)) {
+              boardStyle = 'gridBoard'
+            }
+            return <View key={index}
+              style={
+                [
+                  style.boardStyle,
+                  style[boardStyle]
+                ]
+              }
+            />
+          })
         }
       </View>
     </View>
@@ -21,20 +33,15 @@ function board(value) {
 export default board;
 
 const style = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    perspective: 1000
-  },
   content: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     width: 240,
-    // height: 10,
     backgroundColor: 'black',
     transform: [
-      { rotateY: '40deg' },
-      { rotateZ: '20deg' },
-      { rotateX: '-70deg' },
+      { rotateY: '39deg' },
+      { rotateZ: '18deg' },
+      { rotateX: '-69deg' },
     ],
     shadowColor: '#BDBDBD',
     shadowOffset: { width: 15, height: 15 },
@@ -44,8 +51,6 @@ const style = StyleSheet.create({
   boardStyle: {
     width: 60,
     height: 60,
-    borderWidth: 1,
-    borderColor: '#BDBDBD'
   },
   witeBoard: {
     backgroundColor: '#F0F0F0'
