@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "xingFuApp",
-    "slug": "xingFuApp",
+    "name": "expoParaZeniApp",
+    "slug": "expoParaZeniApp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/pz-logo.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/pz-logo.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -15,16 +15,22 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.parazeni.expoParaZeniApp"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/pz-logo.png",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/pz-logo.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "0922fc98-198a-40c5-ac0e-04ddeb6466ca"
+      }
     }
   }
 }
