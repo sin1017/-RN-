@@ -26,6 +26,8 @@ function board(value) {
           })
         }
       </View>
+      <View style={style.boardBottomOne} />
+      <View style={style.boardBottomTwo} />
     </View>
   )
 };
@@ -40,8 +42,10 @@ const style = StyleSheet.create({
     backgroundColor: 'black',
     transform: [
       { rotateY: '39deg' },
-      { rotateZ: '18deg' },
-      { rotateX: '-69deg' },
+      { rotateZ: '20deg' },
+      { rotateX: '-70deg' },
+      { translateY: 10 },
+      { translateX: 10 }
     ],
     shadowColor: '#BDBDBD',
     shadowOffset: { width: 15, height: 15 },
@@ -57,5 +61,30 @@ const style = StyleSheet.create({
   },
   gridBoard: {
     backgroundColor: '#DDDDDD',
+  },
+  boardBottomOne: {
+    width: 238,
+    height: 20,
+    backgroundColor: "#C3C3C3",
+    transform: [
+      { rotateY: '39deg' },
+      { rotateZ: '20deg' },
+      { rotateX: '19deg' },
+      { translateX: -120 },
+      { translateY: -38 },
+    ],
+    marginLeft: 5
+  },
+  boardBottomTwo: {
+    width: 238,
+    height: 20,
+    backgroundColor: "#C3C3C3",
+    transform: [
+      { rotateY: '-42deg' },
+      { rotateZ: '-19.4deg' },
+      { rotateX: '9deg' },
+      { translateX: 139 },
+      { translateY: -49 },
+    ],
   }
 })
