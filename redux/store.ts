@@ -4,9 +4,10 @@ import { configureStore } from '@reduxjs/toolkit';
 import { persistStore, persistReducer } from 'redux-persist';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { useDispatch } from 'react-redux';
-
+import { boardDataBase } from './data';
 // eslint-disable-next-line import/no-cycle
 import countReducer from './count';
+import data from './data'
 
 const persistConfig = {
   key: 'root',
@@ -21,8 +22,8 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-  count: countReducer,
-
+  counter: countReducer,
+  boardData: data,
   // persist: persistReducerData,
   // Add the generated reducer as a specific top-level slice
   //   [wpApi.reducerPath]: wpApi.reducer,
@@ -30,22 +31,24 @@ const rootReducer = combineReducers({
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
-  reducer: persistedReducer,
+  reducer: {
+    boardData:boardDataBase.reducer,
+    persistedReducer
+  },
   devTools: true,
-  // middleware: [thunk],
-  // Adding the api middleware enables caching, invalidation, polling,
-  // and other useful features of `rtk-query`.
-  //   middleware: (getDefaultMiddleware) =>
-  //     getDefaultMiddleware({
-  //       serializableCheck: {
-  //         ignoredActions: ['persist/PERSIST'],
-  //       },
-  //     }).concat(wpApi.middleware),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: ['persist/PERSIST'],
+      },
+    }),
 });
 
 // optional, but required for refetchOnFocus/refetchOnReconnect behaviors
 // see `setupListeners` docs - takes an optional callback as the 2nd arg for customization
 setupListeners(store.dispatch);
+store.dispatch(boardDataBase.actions.getRandomPlayerList())
+store.dispatch(boardDataBase.actions.getInitSequential())
 
 export const persistor = persistStore(store);
 

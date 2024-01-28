@@ -7,16 +7,13 @@ import {
 } from 'react-native';
 import React from 'react';
 import EventButton from './footer/eventButton';
-function Footer() {
+function Footer(props) {
 	// const [isPress, setIsPress] = React.useState(false);
-	function setNewChess() {
-		console.log('123');
-	}
-	function moveChess() {}
-	function pass() {}
-	function turnLeft() {}
-	function turnRight() {}
-	function seeChessPosition() {}
+	function moveChess() { }
+	function pass() { }
+	function turnLeft() { }
+	function turnRight() { }
+	function seeChessPosition() { }
 
 	return (
 		<View style={styles.container}>
@@ -46,7 +43,7 @@ function Footer() {
 			<View style={styles.eventButtonBox}>
 				<EventButton
 					text={'放置新棋'}
-					eventFunction={setNewChess}
+					eventFunction={props.setNewChess}
 				/>
 				<EventButton
 					text={'移動棋子'}
