@@ -8,40 +8,46 @@ import { checkBoardChessPosition, resetBoard } from '../tools/checkBoard';
 import { useSelector } from 'react-redux';
 
 export default function minView() {
-  const [boardList, setBoardList] = React.useState(
-    useSelector((state) => state.boardData.boardList),
-  );
+  // const testList = [
+  //   [
+  //     {
+  //       name: 'player1',
+  //       score: 0,
+  //       chessNum: 5,
+  //       image: 'red-chess',
+  //     },
+  //     null,
+  //     null
+  //   ],
+  //   [null, null, null],
+  //   [null, null, null],
+  //   [null, null, null],
+  //   [null, null, null],
+  // ];
+  const testList = Array(16).fill(0).map(() => [{}, {}, {}]);
+
+  const [boardList, setBoardList] = React.useState(testList);
+
   const [playerList, setPlayerList] = React.useState(
     useSelector((state) => state.boardData.playerList),
   );
   const [sequential, setSequential] = React.useState(
     useSelector((state) => state.boardData.sequential),
   );
-  const [triggerRender, setTriggerRender] = React.useState(false); // 新增的狀態變數
-
   function addNewChess() {
     const newBoardList = checkBoardChessPosition(boardList);
     setBoardList(newBoardList);
   }
 
   function getAddChessPosition(key, item) {
-    const newBoardList = resetBoard(boardList)
-    setBoardList(newBoardList)
-    // console.log(item);
     const setChessKey = boardList[key].findIndex((target) => target === null);
-    // // 如果找不到空的位置，setChessKey 將為 -1
+    // 如果找不到空的位置，setChessKey 將為 -1
     if (setChessKey !== -1) {
-      boardList[key][setChessKey] = [sequential];
-      setBoardList(boardList);
-
+      boardList[key][setChessKey] = sequential;
+      const newBoardList = JSON.parse(JSON.stringify(boardList));
+      setBoardList(newBoardList);
     }
   }
-  React.useEffect(() => {
-    if (boardList) {
-      console.log('執行');
-      setBoardList(boardList);
-    }
-  }, [boardList]);
 
   return (
     <View style={styles.container}>

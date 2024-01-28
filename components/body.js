@@ -3,21 +3,13 @@ import React from 'react';
 import Banner from './body/banner';
 
 function body(props) {
-  // console.log(props.boardList);
-  let testList = props.boardList
-  React.useEffect(() => {
-    // testList = props.boardList
-    console.log('變動了');
-  }, [props.boardList])
-
-
   return (
     <View>
       <Banner />
       <View style={style.main}>
         <View style={style.board}>
           {
-            props.boardList && testList.map((item, index) => {
+            props.boardList.map((item, index) => {
               let boardStyle = 'witeBoard';
               if ([2, 4, 5, 7, 10, 12, 13, 15].includes(index + 1)) {
                 boardStyle = 'gridBoard'
@@ -28,24 +20,35 @@ function body(props) {
                 boardStyle = [2, 4, 5, 7, 10, 12, 13, 15].includes(index + 1) ? 'greenGridBoard' : 'greenBoard';
               }
 
-              return <TouchableOpacity
-                onPress={() => props.getAddChessPosition(index, item)}
-                disabled={!boardStyle.includes('green')}
-                key={index}
-              >
-                <View key={index}
-                  style={
-                    [
-                      style.boardStyle,
-                      style[boardStyle]
-                    ]
-                  }
+              return <View key={index}>
+                <TouchableOpacity
+                  onPress={() => {
+                    if (props.getAddChessPosition) {
+                      console.log('有');
+                      props.getAddChessPosition(index, item)
+                    }
+                  }}
+                  disabled={!boardStyle.includes('green')}
+                  key={index}
                 >
-                  {
-                    item.image && <Image source={require('../assets/chess/red-chess.png')} />
-                  }
-                </View>
-              </TouchableOpacity>
+                  <View key={index}
+                    style={
+                      [
+                        style.boardStyle,
+                        style[boardStyle]
+                      ]
+                    }
+                  >
+                    {
+                      item.map((itemValue) => {
+                        if (itemValue?.image) {
+                          return <Image source={require('../assets/chess/red-chess.png')} />
+                        }
+                      })
+                    }
+                  </View>
+                </TouchableOpacity>
+              </View>
             })
           }
         </View>

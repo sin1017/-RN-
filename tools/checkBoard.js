@@ -10,9 +10,6 @@ export function checkBoardChessPosition(boardList) {
 
 export function resetBoard(boardList) {
   return boardList.map((item) => item.map((itemValue) => {
-    return itemValue !== null ? {} : itemValue
+    return itemValue === null ? {} : itemValue
   }))
-  // return boardList.map((item) => item.map((itemValue) => {
-  //   return itemValue === null ? [] : itemValue
-  // }))
 }
