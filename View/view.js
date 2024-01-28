@@ -8,25 +8,9 @@ import { checkBoardChessPosition, resetBoard } from '../tools/checkBoard';
 import { useSelector } from 'react-redux';
 
 export default function minView() {
-  // const testList = [
-  //   [
-  //     {
-  //       name: 'player1',
-  //       score: 0,
-  //       chessNum: 5,
-  //       image: 'red-chess',
-  //     },
-  //     null,
-  //     null
-  //   ],
-  //   [null, null, null],
-  //   [null, null, null],
-  //   [null, null, null],
-  //   [null, null, null],
-  // ];
-  const testList = Array(16).fill(0).map(() => [{}, {}, {}]);
-
-  const [boardList, setBoardList] = React.useState(testList);
+  const [boardList, setBoardList] = React.useState(
+    useSelector((state) => state.boardData.boardList),
+  );
 
   const [playerList, setPlayerList] = React.useState(
     useSelector((state) => state.boardData.playerList),

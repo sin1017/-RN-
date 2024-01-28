@@ -22,12 +22,7 @@ function body(props) {
 
               return <View key={index}>
                 <TouchableOpacity
-                  onPress={() => {
-                    if (props.getAddChessPosition) {
-                      console.log('有');
-                      props.getAddChessPosition(index, item)
-                    }
-                  }}
+                  onPress={() => props.getAddChessPosition(index, item)}
                   disabled={!boardStyle.includes('green')}
                   key={index}
                 >
